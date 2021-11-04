@@ -75,8 +75,13 @@ class List extends React.Component {
           <th>
           <Input
                     onChange={(event) => {
-                      const { target1 } = event;
-                      this.setState({ search_item_keyword1: target1.value });
+                      const { target } = event;
+                      this.setState({ 
+                        search_item_keyword1: target.value
+                        
+                      
+                      });
+                      
                     }}
                     placeholder="BY FIELD"
                   />
@@ -84,8 +89,8 @@ class List extends React.Component {
                   <th>
                <Input
                     onChange={(event) => {
-                      const { target2 } = event;
-                      this.setState({ search_item_keyword2: target2.value });
+                      const { target } = event;
+                      this.setState({ search_item_keyword2: target.value });
                     }}
                     placeholder="BY TRACTOR"
                   />
@@ -93,8 +98,8 @@ class List extends React.Component {
                   <th>
                      <Input
                     onChange={(event) => {
-                      const { target3 } = event;
-                      this.setState({ search_item_keyword3: target3.value });
+                      const { target } = event;
+                      this.setState({ search_item_keyword3: target.value });
                     }}
                     placeholder="BY CULTURE"
                   />
@@ -102,8 +107,8 @@ class List extends React.Component {
                   <th>
                   <Input
                     onChange={(event) => {
-                      const { target4 } = event;
-                      this.setState({ search_item_keyword4: target4.value });
+                      const { target } = event;
+                      this.setState({ search_item_keyword4: target.value });
                     }}
                     placeholder="BY DATE"
                   />
@@ -120,10 +125,9 @@ class List extends React.Component {
             </tr>
           </thead>
           <tbody>
-            {SalesList.filter((itm) => 
-                        (itm.field_name)
-                          
-                          .includes(searchword1)
+            {SalesList.filter(itm => 
+                        itm.field_name.includes(searchword1) && itm.tractor_name.includes(searchword2) &&
+                        itm.culture_name.includes(searchword3) && itm.process_date.includes(searchword4)
                       ).map((obj, index) => {
               return (
                 <tr key={index.toString()}>
